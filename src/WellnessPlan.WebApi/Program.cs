@@ -1,16 +1,11 @@
 using Carter;
 
-var assembly = typeof(Program).Assembly;
-var builder = WebApplication.CreateBuilder(args);
+using WellnessPlan.WebApi.Dependency;
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(assembly));
-builder.Services.AddCarter();
-builder.AddServiceDefaults();
+var builder = WebApplication.CreateBuilder(args);
+builder.CoreBuilder();
 
 var app = builder.Build();
-
-// Mapp Services
-app.MapCarter();
+app.MapServices();
 
 await app.RunAsync();

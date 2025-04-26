@@ -384,3 +384,5 @@ dotnet_naming_style.s_camelcase.required_suffix =
 dotnet_naming_style.s_camelcase.word_separator = 
 dotnet_naming_style.s_camelcase.capitalization = camel_case
 
+# Suppress S1144 for all files
+dotnet_diagnostic.S1144.severity = none
