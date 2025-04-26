@@ -1,6 +1,8 @@
 using Carter;
 
+using WellnessPlan.Shared.Messaging;
 using WellnessPlan.WebApi.EndPoints.Enrollment.GetEnrollment;
+using WellnessPlan.WebApi.Infrastructure.Messaging;
 
 namespace WellnessPlan.WebApi.Dependency;
 
@@ -32,10 +34,12 @@ public static class DependencyInjection
     // Core Dependencies
     internal static IServiceCollection RegisterCoreDependencies(this IServiceCollection services)
     {
-        var assembly = typeof(Program).Assembly;
+        // var assembly = typeof(Program).Assembly;
         services.AddEndpointsApiExplorer();
-        services.AddMediatR(config => config.RegisterServicesFromAssembly(assembly));
         services.AddCarter();
+
+        services.AddScoped<IQueryDispatcher, QueryDispatcher>();
+        services.AddScoped<ICommandDispatcher, CommandDispatcher>();
 
         return services;
 

@@ -9,3 +9,8 @@ public interface IQueryDispatcher
 {
     Task<TQueryResult> Dispatch<TQuery, TQueryResult>(TQuery query, CancellationToken cancellationToken);
 }
+
+public interface IQuery;
+
+public interface IQueryResult;
+

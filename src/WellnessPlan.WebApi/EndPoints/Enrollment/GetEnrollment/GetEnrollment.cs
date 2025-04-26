@@ -1,4 +1,5 @@
-using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
 using WellnessPlan.Shared.Messaging;
 
 namespace WellnessPlan.WebApi.EndPoints.Enrollment.GetEnrollment;
@@ -20,7 +21,7 @@ internal static class GetEnrollment
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapGet("/api/enrollments/{enrollmentId:guid}", async (Guid enrollmentId, IQueryDispatcher queryDispatcher, CancellationToken cancellationToken) =>
+            app.MapGet("/api/enrollments/{enrollmentId:guid}", async ([FromRoute] Guid enrollmentId, [FromServices] IQueryDispatcher queryDispatcher, CancellationToken cancellationToken) =>
             {
                 var query = new GetEnrollmentQuery { EnrollmentId = enrollmentId };
                 var response = await queryDispatcher.Dispatch<GetEnrollmentQuery, GetEnrollmentResponse>(query, cancellationToken);
@@ -29,12 +30,12 @@ internal static class GetEnrollment
         }
     }
 
-    internal sealed class GetEnrollmentQuery : IRequest<GetEnrollmentResponse>
+    internal sealed class GetEnrollmentQuery : IQuery
     {
         public Guid EnrollmentId { get; set; }
     }
 
-    internal sealed class GetEnrollmentResponse
+    internal sealed class GetEnrollmentResponse : IQueryResult
     {
         public Guid EnrollmentId { get; set; }
 
