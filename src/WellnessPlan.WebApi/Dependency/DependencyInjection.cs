@@ -1,5 +1,7 @@
 using Carter;
 
+using FluentValidation;
+
 using WellnessPlan.Shared.Messaging;
 using WellnessPlan.WebApi.EndPoints.Enrollment.GetEnrollment;
 using WellnessPlan.WebApi.Infrastructure.Messaging;
@@ -10,11 +12,12 @@ public static class DependencyInjection
 {
 
     // App Builder Dependencies
-    internal static IHostApplicationBuilder CoreBuilder(this IHostApplicationBuilder hostApplicationBuilder)
+    internal static IHostApplicationBuilder CoreBuilder(this WebApplicationBuilder webApplicationBuilder)
     {
-        hostApplicationBuilder.AddServiceDefaults();
-        hostApplicationBuilder.Services.RegisterDependencies();
-        return hostApplicationBuilder;
+        webApplicationBuilder.AddServiceDefaults();
+        webApplicationBuilder.Services.RegisterDependencies();
+        webApplicationBuilder.AddFluentValidationEndpointFilter();
+        return webApplicationBuilder;
     }
 
     internal static WebApplication MapServices(this WebApplication webApplication)
@@ -27,6 +30,7 @@ public static class DependencyInjection
     internal static IServiceCollection RegisterDependencies(this IServiceCollection services)
     {
         services.RegisterCoreDependencies();
+        services.RegisterInfraDependencies();
         services.RegisterUsecaseDependencies();
         return services;
     }
@@ -34,15 +38,21 @@ public static class DependencyInjection
     // Core Dependencies
     internal static IServiceCollection RegisterCoreDependencies(this IServiceCollection services)
     {
-        // var assembly = typeof(Program).Assembly;
+        var assembly = typeof(Program).Assembly;
         services.AddEndpointsApiExplorer();
         services.AddCarter();
+        services.AddValidatorsFromAssembly(assembly);
 
         services.AddScoped<IQueryDispatcher, QueryDispatcher>();
         services.AddScoped<ICommandDispatcher, CommandDispatcher>();
 
         return services;
+    }
 
+    internal static IServiceCollection RegisterInfraDependencies(this IServiceCollection services)
+    {
+        services.AddMemoryCache();
+        return services;
     }
 
     // Use Case Dependencies

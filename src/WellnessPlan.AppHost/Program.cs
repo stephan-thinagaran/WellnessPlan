@@ -1,6 +1,6 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
 builder.AddProject<Projects.WellnessPlan_WebApi>("api")
-       .WithExternalHttpEndpoints(); 
+       .WithExternalHttpEndpoints();
 
 await builder.Build().RunAsync();
