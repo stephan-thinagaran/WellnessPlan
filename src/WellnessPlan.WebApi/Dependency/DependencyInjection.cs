@@ -1,10 +1,10 @@
 using Carter;
-
 using FluentValidation;
-
 using WellnessPlan.Shared.Messaging;
 using WellnessPlan.WebApi.EndPoints.Enrollment.GetEnrollment;
+using WellnessPlan.WebApi.Extensions;
 using WellnessPlan.WebApi.Infrastructure.Messaging;
+using WellnessPlan.WebApi.Middleware;
 
 namespace WellnessPlan.WebApi.Dependency;
 
@@ -12,7 +12,7 @@ public static class DependencyInjection
 {
 
     // App Builder Dependencies
-    internal static IHostApplicationBuilder CoreBuilder(this WebApplicationBuilder webApplicationBuilder)
+    internal static WebApplicationBuilder CoreBuilder(this WebApplicationBuilder webApplicationBuilder)
     {
         webApplicationBuilder.AddServiceDefaults();
         webApplicationBuilder.Services.RegisterDependencies();
@@ -23,6 +23,9 @@ public static class DependencyInjection
     internal static WebApplication MapServices(this WebApplication webApplication)
     {
         webApplication.MapCarter();
+        webApplication.UseMiddleware<RequestContextLoggingMiddleware>();
+        webApplication.UseRequestContextLogging();
+        webApplication.UseExceptionHandler();
         return webApplication;
     }
 
@@ -42,6 +45,9 @@ public static class DependencyInjection
         services.AddEndpointsApiExplorer();
         services.AddCarter();
         services.AddValidatorsFromAssembly(assembly);
+
+        services.AddExceptionHandler<GlobalExceptionHandler>();
+        services.AddProblemDetails();
 
         services.AddScoped<IQueryDispatcher, QueryDispatcher>();
         services.AddScoped<ICommandDispatcher, CommandDispatcher>();

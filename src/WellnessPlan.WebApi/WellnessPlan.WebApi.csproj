@@ -1,20 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
-
   <ItemGroup>
+    <ProjectReference Include="..\WellnessPlan.Infrastructure\WellnessPlan.Infrastructure.csproj" />
     <ProjectReference Include="..\WellnessPlan.ServiceDefaults\WellnessPlan.ServiceDefaults.csproj" />
     <ProjectReference Include="..\WellnessPlan.Shared\WellnessPlan.Shared.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Carter" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
     <PackageReference Include="ForEvolve.FluentValidation.AspNetCore.Http" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Serilog.AspNetCore" />
+    <PackageReference Include="Serilog.Sinks.Seq" />
+    <PackageReference Include="Swashbuckle.AspNetCore" />
   </ItemGroup>
-
 </Project>
