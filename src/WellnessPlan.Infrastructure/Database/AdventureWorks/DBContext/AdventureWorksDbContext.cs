@@ -227,7 +227,7 @@ public partial class AdventureWorksDbContext : DbContext
                 .HasDefaultValueSql("(newid())")
                 .HasComment("ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.")
                 .HasColumnName("rowguid");
-            entity.Property(e => e.SpatialLocation).HasComment("Latitude and longitude of this address.");
+            // entity.Property(e => e.SpatialLocation).HasComment("Latitude and longitude of this address.");
             entity.Property(e => e.StateProvinceId)
                 .HasComment("Unique identification number for the state or province. Foreign key to StateProvince table.")
                 .HasColumnName("StateProvinceID");

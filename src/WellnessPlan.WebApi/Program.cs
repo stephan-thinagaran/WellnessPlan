@@ -2,10 +2,13 @@ using Carter;
 
 using WellnessPlan.WebApi.Dependency;
 
+
 var builder = WebApplication.CreateBuilder(args);
-builder.CoreBuilder();
+var configuration = builder.Configuration;
+builder.CoreBuilder(configuration);
+
 
 var app = builder.Build();
-app.MapServices();
+app.MapServices(configuration);
 
 await app.RunAsync();

@@ -12,11 +12,11 @@ namespace WellnessPlan.Infrastructure.Database
         public static DbContext CreateDbContext(IConfiguration configuration)
         {
             var optionsBuilder = new DbContextOptionsBuilder<DbContext>();
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var connectionString = configuration.GetConnectionString("AdventureWorks");
 
             if (string.IsNullOrEmpty(connectionString))
             {
-                throw new InvalidOperationException("Connection string 'DefaultConnection' is not defined in appsettings.json.");
+                throw new InvalidOperationException("Connection string 'AdventureWorks' is not defined in appsettings.json.");
             }
 
             optionsBuilder.UseSqlServer(connectionString);

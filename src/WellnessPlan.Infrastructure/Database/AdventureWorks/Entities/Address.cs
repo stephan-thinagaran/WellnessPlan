@@ -42,7 +42,7 @@ public partial class Address
     /// <summary>
     /// Latitude and longitude of this address.
     /// </summary>
-    public Geometry? SpatialLocation { get; set; }
+    /// public Geometry? SpatialLocation { get; set; }
 
     /// <summary>
     /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
