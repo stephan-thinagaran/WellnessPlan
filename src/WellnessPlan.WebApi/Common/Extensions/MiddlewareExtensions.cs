@@ -1,6 +1,6 @@
-using WellnessPlan.WebApi.Middleware;
+using WellnessPlan.WebApi.Common.Middleware;
 
-namespace WellnessPlan.WebApi.Extensions;
+namespace WellnessPlan.WebApi.Common.Extensions;
 
 public static class MiddlewareExtensions
 {

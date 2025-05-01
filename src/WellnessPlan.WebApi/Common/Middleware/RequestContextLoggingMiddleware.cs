@@ -1,7 +1,8 @@
 using Microsoft.Extensions.Primitives;
+
 using Serilog.Context;
 
-namespace WellnessPlan.WebApi.Middleware;
+namespace WellnessPlan.WebApi.Common.Middleware;
 
 public class RequestContextLoggingMiddleware(RequestDelegate next)
 {

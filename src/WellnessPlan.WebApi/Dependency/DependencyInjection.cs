@@ -1,14 +1,12 @@
 using Carter;
 using FluentValidation;
-
 using Microsoft.EntityFrameworkCore;
-
 using WellnessPlan.WebApi.Infrastructure.Database;
 using WellnessPlan.WebApi.Infrastructure.Database.AdventureWorks;
 using WellnessPlan.WebApi.Infrastructure.Messaging;
 using WellnessPlan.WebApi.EndPoints.HumanResources.Employee;
-using WellnessPlan.WebApi.Extensions;
-using WellnessPlan.WebApi.Middleware;
+using WellnessPlan.WebApi.Common.Middleware;
+using WellnessPlan.WebApi.Common.Extensions;
 
 namespace WellnessPlan.WebApi.Dependency;
 
