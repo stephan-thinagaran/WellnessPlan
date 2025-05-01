@@ -6,9 +6,9 @@ using Microsoft.Extensions.Caching.Memory;
 
 using Newtonsoft.Json;
 
-using WellnessPlan.Infrastructure.Database;
-using WellnessPlan.Shared.Messaging;
-using Entity = WellnessPlan.Infrastructure.Database.AdventureWorks.Entities;
+using WellnessPlan.WebApi.Infrastructure.Database;
+using Entity = WellnessPlan.WebApi.Infrastructure.Database.AdventureWorks.Entities;
+using WellnessPlan.WebApi.Infrastructure.Messaging;
 
 namespace WellnessPlan.WebApi.EndPoints.HumanResources.Employee;
 

@@ -1,5 +1,3 @@
-using WellnessPlan.Shared.Messaging;
-
 namespace WellnessPlan.WebApi.Infrastructure.Messaging;
 
 public class CommandDispatcher(IServiceProvider serviceProvider) : ICommandDispatcher

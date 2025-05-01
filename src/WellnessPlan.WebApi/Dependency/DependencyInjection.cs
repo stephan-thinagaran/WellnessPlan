@@ -3,12 +3,11 @@ using FluentValidation;
 
 using Microsoft.EntityFrameworkCore;
 
-using WellnessPlan.Infrastructure.Database;
-using WellnessPlan.Infrastructure.Database.AdventureWorks.DBContext;
-using WellnessPlan.Shared.Messaging;
+using WellnessPlan.WebApi.Infrastructure.Database;
+using WellnessPlan.WebApi.Infrastructure.Database.AdventureWorks;
+using WellnessPlan.WebApi.Infrastructure.Messaging;
 using WellnessPlan.WebApi.EndPoints.HumanResources.Employee;
 using WellnessPlan.WebApi.Extensions;
-using WellnessPlan.WebApi.Infrastructure.Messaging;
 using WellnessPlan.WebApi.Middleware;
 
 namespace WellnessPlan.WebApi.Dependency;
