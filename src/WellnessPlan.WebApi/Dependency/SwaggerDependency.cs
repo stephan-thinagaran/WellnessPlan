@@ -30,6 +30,10 @@ internal static class SwaggerDependency
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "WellnessPlan API V1");
                 c.RoutePrefix = string.Empty; // Serve the Swagger UI at the app's root
             });
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "WellnessPlan");
+            });
         }
         return app;
     }
