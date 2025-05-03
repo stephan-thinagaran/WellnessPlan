@@ -7,10 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellnessPlan.AppHost", "src\WellnessPlan.AppHost\WellnessPlan.AppHost.csproj", "{E8566B63-0D3C-422E-A1D7-6A698D487C3A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellnessPlan.ServiceDefaults", "src\WellnessPlan.ServiceDefaults\WellnessPlan.ServiceDefaults.csproj", "{C61187CA-2E04-4590-834E-5F57AF986787}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WellnessPlan.WebApi", "src\WellnessPlan.WebApi\WellnessPlan.WebApi.csproj", "{A82ED0DA-CA9F-4392-A805-49CF2A8CDDAA}"
 EndProject
 Global
@@ -23,30 +19,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E8566B63-0D3C-422E-A1D7-6A698D487C3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8566B63-0D3C-422E-A1D7-6A698D487C3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8566B63-0D3C-422E-A1D7-6A698D487C3A}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E8566B63-0D3C-422E-A1D7-6A698D487C3A}.Debug|x64.Build.0 = Debug|Any CPU
-		{E8566B63-0D3C-422E-A1D7-6A698D487C3A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E8566B63-0D3C-422E-A1D7-6A698D487C3A}.Debug|x86.Build.0 = Debug|Any CPU
-		{E8566B63-0D3C-422E-A1D7-6A698D487C3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8566B63-0D3C-422E-A1D7-6A698D487C3A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E8566B63-0D3C-422E-A1D7-6A698D487C3A}.Release|x64.ActiveCfg = Release|Any CPU
-		{E8566B63-0D3C-422E-A1D7-6A698D487C3A}.Release|x64.Build.0 = Release|Any CPU
-		{E8566B63-0D3C-422E-A1D7-6A698D487C3A}.Release|x86.ActiveCfg = Release|Any CPU
-		{E8566B63-0D3C-422E-A1D7-6A698D487C3A}.Release|x86.Build.0 = Release|Any CPU
-		{C61187CA-2E04-4590-834E-5F57AF986787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C61187CA-2E04-4590-834E-5F57AF986787}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C61187CA-2E04-4590-834E-5F57AF986787}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{C61187CA-2E04-4590-834E-5F57AF986787}.Debug|x64.Build.0 = Debug|Any CPU
-		{C61187CA-2E04-4590-834E-5F57AF986787}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C61187CA-2E04-4590-834E-5F57AF986787}.Debug|x86.Build.0 = Debug|Any CPU
-		{C61187CA-2E04-4590-834E-5F57AF986787}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C61187CA-2E04-4590-834E-5F57AF986787}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C61187CA-2E04-4590-834E-5F57AF986787}.Release|x64.ActiveCfg = Release|Any CPU
-		{C61187CA-2E04-4590-834E-5F57AF986787}.Release|x64.Build.0 = Release|Any CPU
-		{C61187CA-2E04-4590-834E-5F57AF986787}.Release|x86.ActiveCfg = Release|Any CPU
-		{C61187CA-2E04-4590-834E-5F57AF986787}.Release|x86.Build.0 = Release|Any CPU
 		{A82ED0DA-CA9F-4392-A805-49CF2A8CDDAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A82ED0DA-CA9F-4392-A805-49CF2A8CDDAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A82ED0DA-CA9F-4392-A805-49CF2A8CDDAA}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -64,8 +36,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E8566B63-0D3C-422E-A1D7-6A698D487C3A} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
-		{C61187CA-2E04-4590-834E-5F57AF986787} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{A82ED0DA-CA9F-4392-A805-49CF2A8CDDAA} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 	EndGlobalSection
 EndGlobal

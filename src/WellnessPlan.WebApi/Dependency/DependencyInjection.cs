@@ -16,7 +16,6 @@ public static class DependencyInjection
     // App Builder Dependencies
     internal static WebApplicationBuilder CoreBuilder(this WebApplicationBuilder webApplicationBuilder, IConfiguration configuration)
     {
-        webApplicationBuilder.AddServiceDefaults();
         webApplicationBuilder.Services.RegisterDependencies(configuration);
         webApplicationBuilder.AddFluentValidationEndpointFilter();
         return webApplicationBuilder;
@@ -25,6 +24,7 @@ public static class DependencyInjection
     internal static WebApplication MapServices(this WebApplication webApplication, IConfiguration configuration)
     {
         webApplication.MapCarter();
+        webApplication.UseSerilogRequestLogging();
         webApplication.UseMiddleware<RequestContextLoggingMiddleware>();
         webApplication.UseRequestContextLogging();
         webApplication.UseExceptionHandler();

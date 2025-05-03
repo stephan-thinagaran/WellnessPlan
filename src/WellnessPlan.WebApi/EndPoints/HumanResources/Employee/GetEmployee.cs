@@ -17,19 +17,23 @@ public static class GetEmployee
 
     public class GetEmployeeQueryHandler : IQueryHandler<GetEmployeeQuery, GetEmployeeResponse>
     {
-        private readonly IMemoryCache cache;
-        private readonly SqlRepository<Entity.Employee> employeeRepo;
+        private readonly IMemoryCache _cache;
+        private readonly SqlRepository<Entity.Employee> _employeeRepo;
+        private readonly ILogger<GetEmployeeQueryHandler> _logger;
 
-        public GetEmployeeQueryHandler(IMemoryCache cache, SqlRepository<Entity.Employee> employeeRepo)
+        public GetEmployeeQueryHandler(IMemoryCache cache, SqlRepository<Entity.Employee> employeeRepo, ILogger<GetEmployeeQueryHandler> logger)
         {
-            this.cache = cache;
-            this.employeeRepo = employeeRepo;
+            _cache = cache;
+            _employeeRepo = employeeRepo;
+            _logger = logger;
         }
 
         public async Task<GetEmployeeResponse?> Handle(GetEmployeeQuery query, CancellationToken cancellationToken)
         {
+            _logger.LogInformation("GetEmployeeQueryHandler method started");
+
             var cacheKey = $"{Constant.EmployeeIdCachePrefix}{query.NationalIDNumber}";
-            if(cache.TryGetValue<string?>(cacheKey, out string? cachedResponseJson) 
+            if(_cache.TryGetValue<string?>(cacheKey, out string? cachedResponseJson) 
                     && !string.IsNullOrWhiteSpace(cachedResponseJson))
             {   
                 try
@@ -45,7 +49,7 @@ public static class GetEmployee
                 }
             }
 
-            var employees = await employeeRepo.FindAsync(x=>x.NationalIdnumber == query.NationalIDNumber).ConfigureAwait(false);
+            var employees = await _employeeRepo.FindAsync(x=>x.NationalIdnumber == query.NationalIDNumber).ConfigureAwait(false);
             var employee = employees.FirstOrDefault();
 
             if(employee == null)
@@ -54,7 +58,9 @@ public static class GetEmployee
             var response = MapExtension.ToGetEmployeeResponse(employee);
             var responseJson = JsonConvert.SerializeObject(response);
 
-            cache.Set<string>(cacheKey, responseJson);
+            _cache.Set<string>(cacheKey, responseJson);
+
+            _logger.LogInformation("GetEmployeeQueryHandler method completed");
 
             return response;
         }
