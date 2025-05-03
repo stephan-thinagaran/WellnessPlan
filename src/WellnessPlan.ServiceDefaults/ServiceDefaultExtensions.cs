@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.ServiceDiscovery;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
+using Serilog;
 
 namespace Microsoft.Extensions.Hosting;
 
@@ -111,5 +111,25 @@ public static class ServiceDefaultExtensions
         }
 
         return app;
+    }
+
+    public static void AddLoggingDefaults(this WebApplicationBuilder builder)
+    {
+        var seqUrl = builder.Configuration["Seq:Url"];
+        if (string.IsNullOrEmpty(seqUrl))
+        {
+            throw new InvalidOperationException("Seq URL is not configured. Please set 'Seq:Url' in appsettings.json.");
+        }
+
+        var logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(builder.Configuration)
+            .Enrich.WithEnvironmentName()
+            .Enrich.WithThreadId()
+            .WriteTo.Console()
+            .WriteTo.Seq(seqUrl)
+            .CreateLogger();
+
+        builder.Logging.ClearProviders();
+        builder.Logging.AddSerilog(logger);
     }
 }

@@ -4,6 +4,10 @@ using WellnessPlan.WebApi.Dependency;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add logging defaults
+builder.AddLoggingDefaults();
+
 var configuration = builder.Configuration;
 builder.CoreBuilder(configuration);
 
