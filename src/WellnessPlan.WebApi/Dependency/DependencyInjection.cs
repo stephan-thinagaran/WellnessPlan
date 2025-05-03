@@ -24,10 +24,10 @@ public static class DependencyInjection
     internal static WebApplication MapServices(this WebApplication webApplication, IConfiguration configuration)
     {
         webApplication.MapCarter();
-        webApplication.UseSerilogRequestLogging();
         webApplication.UseMiddleware<RequestContextLoggingMiddleware>();
         webApplication.UseRequestContextLogging();
         webApplication.UseExceptionHandler();
+        webApplication.MapSwaggerEndpoints();
         return webApplication;
     }
 
@@ -47,6 +47,7 @@ public static class DependencyInjection
         services.AddEndpointsApiExplorer();
         services.AddCarter();
         services.AddValidatorsFromAssembly(assembly);
+        services.AddSwaggerDefaults();
 
         services.AddExceptionHandler<GlobalExceptionHandler>();
         services.AddProblemDetails();
